@@ -10,17 +10,22 @@ int comp(const void* a,const void* b){
 }
 int main() {
     struct node nums[10];
+    //初始化
     for(int i = 0; i<10 ;i++){
         nums[i].num=0;
         nums[i].i=i;
     }
     char num[MAX] = {0};
+    //输入
     scanf_s("%s",&num,MAX);
+    //处理输入，桶排序
     for(int i=0;i<MAX;i++){
        if(num[i]==0)break;
        nums[num[i]-'0'].num++;
     }
+    //依照数量大小排序
     qsort(nums,10, sizeof(nums[0]),comp);
+    //输出
     for(int i = 0; i<10 ;i++){
         while(nums[i].num--){
             printf("%d",nums[i].i);
